@@ -7,13 +7,13 @@ import { getNews } from './../../api/apiNews'
 const Main = () => {
 	const [news, setNews] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
+	console.log(news)
 
 	useEffect(() => {
 		const fetchNews = async () => {
 			try {
 				setIsLoading(true)
 				const resonse = await getNews()
-
 				setNews(resonse.news)
 				setIsLoading(false)
 			} catch (error) {
