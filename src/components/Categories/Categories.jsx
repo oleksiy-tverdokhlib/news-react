@@ -4,6 +4,14 @@ import styles from './Categories.module.css'
 const Categories = ({ categories, setSelectedCategory, selectedCategory }) => {
 	return (
 		<div className={styles.categories}>
+			<button
+				onClick={() => setSelectedCategory(null)}
+				disabled={selectedCategory === "All"}
+				className={!selectedCategory ? styles.active : styles.item}
+			>
+				All
+			</button>
+
 			{categories.map((category) => {
 				return (
 					<button
