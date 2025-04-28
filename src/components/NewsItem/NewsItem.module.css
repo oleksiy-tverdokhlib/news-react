@@ -1,15 +1,29 @@
-.banner {
+.item {
 	display: flex;
 	width: 100%;
-	flex-direction: column;
-	gap: 23px;
+	gap: 12px;
 }
 
 .title {
-	font-size: 16px;
+	font-size: 14px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 }
 
 .extra {
 	font-size: 12px;
 	color: #6c7072;
+}
+
+.wrapper {
+	width: 64px;
+	height: 64px;
+	background-color: #f2f4f5;
+	background-position: center;
+	background-size: cover;
+	flex-shrink: 0;
 }
