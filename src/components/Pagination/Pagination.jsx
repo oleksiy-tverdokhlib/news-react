@@ -10,6 +10,7 @@ const Pagination = ({
 }) => {
 	return (
 		<div className={styles.pagination}>
+
 			<button
 				className={styles.arrow}
 				disabled={currentPage <= 1}
@@ -17,6 +18,7 @@ const Pagination = ({
 			>
 				{'<'}
 			</button>
+
 			<div className={styles.list}>
 				{[...Array(totalPages)].map((_, index) => {
 					return (
@@ -31,6 +33,7 @@ const Pagination = ({
 					)
 				})}
 			</div>
+
 			<button
 				className={styles.arrow}
 				disabled={currentPage >= totalPages}
@@ -38,6 +41,7 @@ const Pagination = ({
 			>
 				{'>'}
 			</button>
+			
 		</div>
 	)
 }
