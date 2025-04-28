@@ -6,6 +6,8 @@ import { getCategories, getNews } from './../../api/apiNews'
 import Pagination from '../../components/Pagination/Pagination'
 import NewsBanner from './../../components/NewsBanner/NewsBanner'
 import Categories from '../../components/Categories/Categories'
+import Search from '../../components/Search/Search'
+import { useDebounce } from '../../helpers/hooks/useDebounce'
 
 const Main = () => {
 	const [news, setNews] = useState([])
@@ -13,8 +15,11 @@ const Main = () => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [currentPage, setCurentPage] = useState(1)
 	const [selectedCategory, setSelectedCategory] = useState('All')
+	const [keywords, setKeywords] = useState('')
 	const totalPages = 10
 	const pageSize = 10
+
+	const debouncedKeywords = useDebounce(keywords, 1500)
 
 	const fetchNews = async (currentPage) => {
 		try {
@@ -23,6 +28,7 @@ const Main = () => {
 				page_number: currentPage,
 				page_size: pageSize,
 				category: selectedCategory === 'All' ? null : selectedCategory,
+				keywords: debouncedKeywords,
 			})
 			setNews(resonse.news)
 			setIsLoading(false)
@@ -41,12 +47,12 @@ const Main = () => {
 	}
 
 	useEffect(() => {
-		// fetchCategories()
+		fetchCategories()
 	}, [])
 
 	useEffect(() => {
-		// fetchNews(currentPage)
-	}, [currentPage, selectedCategory])
+		fetchNews(currentPage)
+	}, [currentPage, selectedCategory, debouncedKeywords])
 
 	const handleNextPage = () => {
 		if (currentPage < totalPages) {
@@ -71,6 +77,7 @@ const Main = () => {
 				setSelectedCategory={setSelectedCategory}
 			/>
 
+			<Search keywords={keywords} setKeywords={setKeywords} />
 			{news.length > 0 && !isLoading ? (
 				<NewsBanner item={news[0]} />
 			) : (
