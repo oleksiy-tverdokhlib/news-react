@@ -11,7 +11,7 @@ export const useFetch = (fetchFunction, params) => {
 			try {
 				setIsLoading(true)
 				const response = await fetchFunction(params)
-
+				//
 				setData(response)
 			} catch (err) {
 				setError(err)
