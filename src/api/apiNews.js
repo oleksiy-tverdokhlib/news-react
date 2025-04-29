@@ -25,7 +25,6 @@ export const getNews = async ({
 	}
 }
 
-
 export const getLatestNews = async () => {
 	try {
 		const resonse = await axios.get(`${BASE_URL}latest-news`, {
@@ -38,7 +37,6 @@ export const getLatestNews = async () => {
 		console.log(error)
 	}
 }
-
 
 export const getCategories = async () => {
 	try {
