@@ -8,7 +8,7 @@ const BannersList = ({ banners }) => {
 	return (
 		<ul className={banners == undefined ? null : styles.banners}>
 			{banners == undefined ? (
-				<Skeleton type="banner" count={30} direction="row" />
+				<Skeleton type="banner" count={20} direction="row" />
 			) : (
 				banners?.map((banner) => {
 					return <NewsBanner key={banner.id} item={banner} />
@@ -18,6 +18,6 @@ const BannersList = ({ banners }) => {
 	)
 }
 
-const BannerListWithSkeleton = withSkeleton(BannersList, 'banner', 30, 'row')
+const BannerListWithSkeleton = withSkeleton(BannersList, 'banner', 20, 'row')
 
 export default BannerListWithSkeleton
