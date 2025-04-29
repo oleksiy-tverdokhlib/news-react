@@ -3,6 +3,7 @@ import styles from './NewsItem.module.css'
 import { formatTimeAgo } from '../../helpers/FormatTimeAgo'
 
 const NewsItem = ({ item }) => {
+	
 	return (
 		<li className={styles.item}>
 			<div
