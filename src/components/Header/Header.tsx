@@ -1,4 +1,3 @@
-import React from 'react'
 import { formDate } from '../../helpers/formatDate'
 import styles from './Header.module.css'
 

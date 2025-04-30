@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef } from 'react'
+import { ForwardedRef, forwardRef } from 'react'
 import styles from './Categories.module.css'
 import { CategoriesType } from '../../interfaces'
 

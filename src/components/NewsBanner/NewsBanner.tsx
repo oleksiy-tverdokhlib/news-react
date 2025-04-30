@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './NewsBanner.module.css'
 import { formatTimeAgo } from '../../helpers/FormatTimeAgo'
 import Image from '../Image/Image'

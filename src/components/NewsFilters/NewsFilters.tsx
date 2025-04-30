@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './NewsFilters.module.css'
 import { useFetch } from '../../helpers/hooks/useFetch'
 import { getCategories } from '../../api/apiNews'

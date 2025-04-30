@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { PAGE_SIZE } from '../../constants/constants'
-import { IfStatement } from 'typescript'
 import { IFilters } from '../../interfaces'
 
 export const useFilters = (initialFilters: IFilters) => {

@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './BannersList.module.css'
 import withSkeleton from '../../helpers/HOCs/withSkeleton'
 import NewsBanner from '../NewsBanner/NewsBanner'
