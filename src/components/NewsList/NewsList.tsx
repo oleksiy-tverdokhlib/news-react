@@ -1,4 +1,3 @@
-import React from 'react'
 import NewsItem from '../NewsItem/NewsItem'
 import withSkeleton from '../../helpers/HOCs/withSkeleton'
 import Skeleton from '../Skeleton/Skeleton'

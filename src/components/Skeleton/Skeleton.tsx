@@ -1,4 +1,4 @@
-import React from 'react'
+
 import styles from './Skeleton.module.css'
 import { DirectionType, SkeletonType } from '../../interfaces'
 

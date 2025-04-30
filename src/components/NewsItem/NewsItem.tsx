@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './NewsItem.module.css'
 import { formatTimeAgo } from '../../helpers/FormatTimeAgo'
 import { INews } from '../../interfaces'

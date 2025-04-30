@@ -1,6 +1,4 @@
-import React from 'react'
 import styles from './NewsByFilter.module.css'
-import Pagination from '../Pagination/Pagination'
 import NewsListWithSkeleton from '../NewsList/NewsList'
 import { PAGE_SIZE, TOTAL_PAGES } from '../../constants/constants'
 import NewsFilters from '../NewsFilters/NewsFilters'
