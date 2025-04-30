@@ -1,12 +1,16 @@
-import React from 'react'
 import styles from './BannersList.module.css'
 import withSkeleton from '../../helpers/HOCs/withSkeleton'
 import NewsBanner from '../NewsBanner/NewsBanner'
 import Skeleton from '../Skeleton/Skeleton'
+import { INews } from '../../interfaces'
 
-const BannersList = ({ banners }) => {
+interface Props {
+	banners?: INews[] | null
+}
+
+const BannersList = ({ banners }: Props) => {
 	return (
-		<ul className={banners == undefined ? null : styles.banners}>
+		<ul className={banners ? styles.banners : undefined}>
 			{banners == undefined ? (
 				<Skeleton type="banner" count={20} direction="row" />
 			) : (
@@ -18,6 +22,6 @@ const BannersList = ({ banners }) => {
 	)
 }
 
-const BannerListWithSkeleton = withSkeleton(BannersList, 'banner', 20, 'row')
+const BannerListWithSkeleton = withSkeleton<Props>(BannersList, 'banner', 20, 'row')
 
 export default BannerListWithSkeleton

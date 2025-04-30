@@ -1,12 +1,25 @@
-import React from 'react'
-import styles from './Skeleton.module.css'
 
-const Skeleton = ({ count = 1, type = 'banner', direction = 'column' }) => {
+import styles from './Skeleton.module.css'
+import { DirectionType, SkeletonType } from '../../interfaces'
+
+interface Props {
+	type?: SkeletonType
+	count?: number
+	direction?: DirectionType
+}
+
+const Skeleton = ({
+	count = 1,
+	type = 'banner',
+	direction = 'column',
+}: Props) => {
 	return (
 		<>
 			{count > 1 ? (
 				<ul
-					className={direction === 'column' ? styles.columnList : styles.rowList}
+					className={
+						direction === 'column' ? styles.columnList : styles.rowList
+					}
 				>
 					{[...Array(count)].map((_, index) => (
 						<li

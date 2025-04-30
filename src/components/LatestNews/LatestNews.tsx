@@ -1,12 +1,13 @@
-import React from 'react'
 import styles from './LatestNews.module.css'
-import BannersList from '../BannersList/BannersList'
 import BannerListWithSkeleton from '../BannersList/BannersList'
 import { useFetch } from '../../helpers/hooks/useFetch'
 import { getLatestNews } from '../../api/apiNews'
+import { NewsApiResponse } from './../../interfaces/index'
 
 const LatestNews = () => {
-	const { data, isLoading } = useFetch(getLatestNews)
+	const { data, isLoading } = useFetch<undefined, NewsApiResponse>(
+		getLatestNews
+	)
 
 	return (
 		<section className={styles.section}>

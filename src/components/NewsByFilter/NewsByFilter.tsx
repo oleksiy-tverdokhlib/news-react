@@ -1,6 +1,4 @@
-import React from 'react'
 import styles from './NewsByFilter.module.css'
-import Pagination from '../Pagination/Pagination'
 import NewsListWithSkeleton from '../NewsList/NewsList'
 import { PAGE_SIZE, TOTAL_PAGES } from '../../constants/constants'
 import NewsFilters from '../NewsFilters/NewsFilters'
@@ -9,6 +7,7 @@ import { useDebounce } from '../../helpers/hooks/useDebounce'
 import { useFilters } from '../../helpers/hooks/useFilters'
 import { getNews } from '../../api/apiNews'
 import PaginationWrapper from '../PaginationWrapper/PaginationWrapper'
+import { NewsApiResponse, ParamsType } from '../../interfaces'
 
 const NewsByFilter = () => {
 	const { filters, changeFilter } = useFilters({
@@ -20,7 +19,7 @@ const NewsByFilter = () => {
 
 	const debouncedKeywords = useDebounce(filters.keywords, 1500)
 
-	const { data, isLoading } = useFetch(getNews, {
+	const { data, isLoading } = useFetch<ParamsType, NewsApiResponse>(getNews, {
 		...filters,
 		keywords: debouncedKeywords,
 	})
@@ -36,7 +35,7 @@ const NewsByFilter = () => {
 		}
 	}
 
-	const handlePageClick = (pagenumber) => {
+	const handlePageClick = (pagenumber: number) => {
 		changeFilter('page_number', pagenumber)
 	}
 

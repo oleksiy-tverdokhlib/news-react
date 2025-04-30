@@ -1,12 +1,15 @@
-import React from 'react'
-import styles from './NewsList.module.css'
 import NewsItem from '../NewsItem/NewsItem'
 import withSkeleton from '../../helpers/HOCs/withSkeleton'
 import Skeleton from '../Skeleton/Skeleton'
+import { INews } from '../../interfaces'
 
-const NewsList = ({ news }) => {
+interface Props {
+	news?: INews[]
+}
+
+const NewsList = ({ news }: Props) => {
 	return (
-		<ul className={styles.list}>
+		<ul>
 			{news === undefined ? (
 				<Skeleton type="item" count={10} />
 			) : (
@@ -18,6 +21,6 @@ const NewsList = ({ news }) => {
 	)
 }
 
-const NewsListWithSkeleton = withSkeleton(NewsList, 'item', 10)
+const NewsListWithSkeleton = withSkeleton<Props>(NewsList, 'item', 10)
 
 export default NewsListWithSkeleton
