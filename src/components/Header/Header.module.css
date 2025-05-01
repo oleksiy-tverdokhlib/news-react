@@ -1,11 +1,17 @@
 .header {
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%;
 	padding: 12px 24px;
 	background-color: 'white';
 	border-bottom: 1px solid #f2f4f5;
+}
+
+.info {
+	display: flex;
 	flex-direction: column;
-	gap: 23px;
+	gap: 12px;
 }
 
 .title {
@@ -14,4 +20,13 @@
 
 .date {
 	font-size: 16px;
+}
+
+.dark {
+	background-color: #23272f;
+	border-bottom: 1ps solid rgb(60, 60, 60);
+}
+
+.light {
+	background-color: white;
 }

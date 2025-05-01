@@ -24,9 +24,9 @@ export const useFetch = <P, T>(
 		;(async () => {
 			try {
 				setIsLoading(true)
-				const response = await fetchFunction(params)
+				// const response = await fetchFunction(params)
 
-				setData(response)
+				// setData(response)
 			} catch (err) {
 				setError(err as Error)
 			} finally {
