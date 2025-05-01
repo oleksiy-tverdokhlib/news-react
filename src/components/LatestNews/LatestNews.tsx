@@ -1,14 +1,9 @@
-import styles from './LatestNews.module.css'
+import { useGetLatestNewsQuery } from '@/store/services/newsApi'
 import BannerListWithSkeleton from '../BannersList/BannersList'
-import { useFetch } from '../../helpers/hooks/useFetch'
-import { getLatestNews } from '../../api/apiNews'
-import { NewsApiResponse } from './../../interfaces/index'
+import styles from './LatestNews.module.css'
 
 const LatestNews = () => {
-	const { data, isLoading } = useFetch<undefined, NewsApiResponse>(
-		getLatestNews
-	)
-
+	const { data, isLoading } = useGetLatestNewsQuery(null)
 	return (
 		<section className={styles.section}>
 			<BannerListWithSkeleton
