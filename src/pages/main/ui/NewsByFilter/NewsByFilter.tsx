@@ -1,15 +1,13 @@
-import { useAppDispatch, useAppSelector } from '@/app/appStore'
-import PaginationWrapper from '@/features/pagination/ui/Pagination/Pagination'
-import { TOTAL_PAGES } from '@/shared/constants/constants'
+import { useAppSelector } from '@/app/appStore'
+import { useGetCategoriesQuery } from '@/entities/category/api/api'
 import { useGetNewsQuery } from '@/entities/news/api/api'
-import { setFilters } from '@/entities/news/model/slice'
 import { useDebounce } from '@/shared/hooks/useDebounce'
-import NewsListWithSkeleton from '@/widgets/news/ui/NewsList/NewsList'
-import NewsFilters from '../NewsFilters/NewsFilters'
+import { NewsFilters } from '@/widgets/news'
+import NewsListWithPagination from '../NewsListWithPagination/NewsListWithPagination'
 import styles from './NewsByFilter.module.css'
 
 const NewsByFilter = () => {
-	const dispatch = useAppDispatch()
+	const { data } = useGetCategoriesQuery(null)
 	const filters = useAppSelector((state) => state.news.filters)
 	const news = useAppSelector((state) => state.news.news)
 
@@ -20,39 +18,14 @@ const NewsByFilter = () => {
 		keywords: debouncedKeywords,
 	})
 
-	const handleNextPage = () => {
-		if (filters.page_number < TOTAL_PAGES) {
-			dispatch(
-				setFilters({ key: 'page_number', value: filters.page_number + 1 })
-			)
-		}
-	}
-	const handlePreviousPage = () => {
-		if (filters.page_number > 1) {
-			dispatch(
-				setFilters({ key: 'page_number', value: filters.page_number - 1 })
-			)
-		}
-	}
-
-	const handlePageClick = (pagenumber: number) => {
-		dispatch(setFilters({ key: 'page_number', value: pagenumber }))
-	}
-
 	return (
 		<section className={styles.section}>
-			<NewsFilters filters={filters} />
-			<PaginationWrapper
-				top={true}
-				bottom={true}
-				totalPages={TOTAL_PAGES}
-				handleNextPage={handleNextPage}
-				handlePreviousPage={handlePreviousPage}
-				handlePageClick={handlePageClick}
-				currentPage={filters.page_number}
-			>
-				<NewsListWithSkeleton isLoading={isLoading} news={news} />
-			</PaginationWrapper>
+			<NewsFilters categories={data?.categories || []} filters={filters} />
+			<NewsListWithPagination
+				filters={filters}
+				news={news}
+				isLoading={isLoading}
+			/>
 		</section>
 	)
 }
